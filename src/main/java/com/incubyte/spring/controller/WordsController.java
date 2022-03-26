@@ -9,9 +9,11 @@ import com.incubyte.spring.exception.WordDoesNotExist;
 import com.incubyte.spring.service.WordsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -27,12 +29,13 @@ public class WordsController {
     }
 
     @PostMapping("/save")
-    public Words saveWord(@Valid Words word){
+    @ResponseStatus(HttpStatus.CREATED)
+    public Words saveWord(Words word){
         return wordsService.saveWord(word);
     }
 
     @GetMapping("/find/{id}")
-    public Words findWordById(Long id) throws WordDoesNotExist{
+    public Words findWordsById(Long id) throws WordDoesNotExist{
         return wordsService.findWordsById(id);
     }
 

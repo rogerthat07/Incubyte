@@ -9,18 +9,18 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Words {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    @NotEmpty(message="Word is mandatory")
-    @Size(min=3)
     private String word;
 }

@@ -8,6 +8,7 @@ import com.incubyte.spring.entity.Words;
 import com.incubyte.spring.exception.WordDoesNotExist;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -51,7 +53,7 @@ public class WebController {
 
     @GetMapping("/update/{id}")
     public ModelAndView updateWords(@PathVariable Long id, Model model) throws WordDoesNotExist{
-        Words words = wordsController.findWordById(id);
+        Words words = wordsController.findWordsById(id);
         model.addAttribute("words", words);
         if(words!=null)
             return new ModelAndView("update");
