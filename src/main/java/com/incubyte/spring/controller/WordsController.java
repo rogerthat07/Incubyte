@@ -2,6 +2,8 @@ package com.incubyte.spring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.incubyte.spring.entity.Words;
 import com.incubyte.spring.exception.WordDoesNotExist;
 import com.incubyte.spring.service.WordsService;
@@ -25,7 +27,7 @@ public class WordsController {
     }
 
     @PostMapping("/save")
-    public Words saveWord(Words word){
+    public Words saveWord(@Valid Words word){
         return wordsService.saveWord(word);
     }
 
