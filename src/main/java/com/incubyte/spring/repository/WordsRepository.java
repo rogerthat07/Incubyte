@@ -7,5 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface WordsRepository extends JpaRepository<Words, Long> {
+
+    Words findWordsById(Long id);
     
 }
