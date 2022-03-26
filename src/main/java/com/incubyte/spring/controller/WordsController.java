@@ -19,7 +19,7 @@ public class WordsController {
     @Autowired
     private WordsService wordsService;
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<Words> getAllWords(){
         return wordsService.getAllWords();
     }
@@ -29,10 +29,9 @@ public class WordsController {
         return wordsService.saveWord(word);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public Words findWordById(Long id) throws WordDoesNotExist{
-        Words words = wordsService.findWordsById(id); 
-        return words;
+        return wordsService.findWordsById(id);
     }
 
     @GetMapping("/delete/{id}")
